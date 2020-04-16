@@ -1,25 +1,49 @@
-#include<iostream>
+#include<bits/stdc++.h>
 using namespace std;
-long bigmod(long b,long p,long m)
-{
-	if(p==0) return 1;
-	else if(p%2==0)
-	{
-        long int l,k;
-        l=bigmod(b,p/2,m);
-        k=l*l;
-        return (k%m);
-	}
-	else
-	{
-	   return ((b%m)*bigmod(b,p-1,m))%m;
-	}
-}
 int main()
 {
-	long a,b,c;
-	while(cin>>a>>b>>c)
-	{
-	    cout<<bigmod(a,b,c)<<endl;
-	}
+    string s;
+    cin>>s;
+    char k,ll,m;
+    int l=s.size(),c=0;
+    for(int i=0;i<l;i++)
+    {
+         c++;
+        if(s[i]=='.')
+        {
+
+             k=s[i-1];
+             ll=s[i+1];
+             break;
+        }
+    }
+    ///cout<<k<<endl;
+    ///cout<<ll<<endl;
+    ///cout<<c<<endl;
+
+
+    if(k<'9'&&ll<'5')
+    {
+        for(int i=0;i<c-1;i++)
+        {
+            cout<<s[i];
+        }
+       /// cout<<"hi"<<endl;
+    }
+    else if(k<'9'&&ll>='5')
+    {
+        k=k-'0'+1;
+        k=k+'0';
+
+        for(int i=0;i<c-2;i++)
+        {
+            cout<<s[i];
+        }
+         cout<<k<<endl;
+    }
+   else if(k=='9')
+    {
+        cout<<"GOTO Vasilisa."<<endl;
+    }
+    return 0;
 }
